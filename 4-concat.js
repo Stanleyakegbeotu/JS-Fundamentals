@@ -1,13 +1,22 @@
-if (process.argv.length < 4) {
-    // Log a helpful message if arguments are missing
-    console.log("Error: Please provide two arguments.");
-    console.log("Usage Example: node print_arguments.js first_value second_value");
-} else {
-    // Use const for variables, adhering to the "no var" rule
-    const argumentOne = process.argv[2];
-    const argumentTwo = process.argv[3];
+/**
+ * Script that prints two arguments passed to it, in the format: "arg1 is arg2"
+ *
+ * Requirements:
+ * 1. Must use console.log(...) for all output.
+ * 2. Must not use 'var'.
+ * 3. Handles missing arguments by printing the string 'undefined'.
+ *
+ * Arguments are accessed via process.argv, starting at index 2.
+ */
 
-    // Print the arguments in the required format: "arg1 is arg2"
-    // Using a template literal for clean string interpolation
-    console.log(`${argumentOne} is ${argumentTwo}`);
-}
+// Access the potential arguments. They will hold the value 'undefined' if missing.
+const firstArgRaw = process.argv[2];
+const secondArgRaw = process.argv[3];
+
+// Explicitly check if the argument value is 'undefined' and use the string "undefined"
+// for printing if it is, otherwise use the argument itself.
+const firstArg = firstArgRaw === undefined ? 'undefined' : firstArgRaw;
+const secondArg = secondArgRaw === undefined ? 'undefined' : secondArgRaw;
+
+// Use a template literal to construct the required output string and print it.
+console.log(`${firstArg} is ${secondArg}`);
